@@ -82,6 +82,8 @@ public class DelegadoConsultaTareas {
 		String[] taskUser = new String[1];
 		taskUser[0] = idUser;
 		
+		
+		
 		//4. crea la instancia del proceso para la definicón de proceso especificada.
 		//ProcessInstance processInstance  =  new ProcessInstance(processDefinition);
 		//5. Obtiene el objeto TaskMgmtSession que permite consultar las 
@@ -89,6 +91,8 @@ public class DelegadoConsultaTareas {
 		//   se logue en la aplicación.
 		TaskMgmtSession taskMgmtSession = jbpmContext.getTaskMgmtSession();
 		List taskByUser = taskMgmtSession.findTaskInstances(taskUser[0]);
+		
+//		taskMgmtSession.findTaskInstances(
 		
 		if(taskByUser == null || taskByUser.size() == 0)
 			throw new Exception("[No se han econtrado tareas pendientes ..]");
@@ -126,8 +130,7 @@ public class DelegadoConsultaTareas {
 				String customerName = (String) taskInstance.getToken().getProcessInstance().getContextInstance().getVariable("nombreCliente");
 
 				//obtiene el nombre del cliente del contexto del proceso.
-				taskVo.setCustomerId(customerId!=null?customerId:"- sin valor -");
-				taskVo.setCustumerName(customerName!=null?customerName:"- sin valor -");
+//				taskVo.setCustumerName(customerName!=null?customerName:"- sin valor -");
 				taskVo.setTaskId(String.valueOf(taskInstance.getId()));
 				
 				listaTareas.add(taskVo);
@@ -190,11 +193,8 @@ public class DelegadoConsultaTareas {
 					
 
 					//obtiene el nombre del cliente del contexto del proceso.
-					taskVo.setCustomerId(customerId!=null?customerId:"- sin valor -");
-					taskVo.setCustumerName(customerName!=null?customerName:"- sin valor -");
+//					taskVo.setCustumerName(customerName!=null?customerName:"- sin valor -");
 					taskVo.setTaskId(String.valueOf(taskInstance.getId()));
-					taskVo.setNombreCargo(nombreCargo);
-					taskVo.setObservations(observaciones);
 					
 					
 				}//fin if

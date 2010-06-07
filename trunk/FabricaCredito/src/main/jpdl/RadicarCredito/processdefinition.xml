@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<process-definition  xmlns="urn:jbpm.org:jpdl-3.2"  name="RadicarCredito">
-	
-	<swimlane name="Analizador de Créditos"></swimlane>
-	<swimlane name="Operador de digitalización"></swimlane>
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2"
+	name="RadicarCredito">
 
-	<swimlane name="Miembro de la Comisión de Aprobación"></swimlane>
+	<swimlane name="Analizador de Créditos">
+		<assignment actor-id="usuario1"></assignment>
+	</swimlane>
+	<swimlane name="Operador de digitalización">
+		<assignment actor-id="usuario2"></assignment>
+	</swimlane>
+	<swimlane name="Miembro de la Comisión de Aprobación">
+		<assignment actor-id="usuario3"></assignment>
+	</swimlane>
 
 	<start-state name="Recibir Datos Radicacion Solicitud">
 		<task name="Recibir Datos Radicacion Solicitud" swimlane="Analizador de Créditos">
 			<controller>
-				<variable name="numero_radicacion"></variable>
+				<variable name="numero_radicacion" access="read,write"></variable>
 			</controller>
+
 		</task>
 		<transition to="Matricular documentos de la solicitud de crédito"></transition>
-		
-	
+
+
 	</start-state>
 
 
 	<node name="Matricular documentos de la solicitud de crédito">
 		<transition to="Digitalizar documento físico"></transition>
+		
 	</node>
 
-	<task-node name="Digitalizar documento físico" >
+	<task-node name="Digitalizar documento físico">
 		<task name="Digitalizar documento físico" swimlane="Operador de digitalización">
-		
+
 		</task>
 		<transition to="Validar Documentos"></transition>
-	
+
 	</task-node>
-	
-	<task-node name="Validar Documentos" >
+
+	<task-node name="Validar Documentos">
 		<task name="Validar Documentos" swimlane="Analizador de Créditos">
-		
+
 		</task>
 		<transition to="Validar referencias"></transition>
 	</task-node>
-	
+
 	<node name="Validar referencias">
 		<transition to="Asignar análisis solicitud de crédito"></transition>
 	</node>
 	<node name="Asignar análisis solicitud de crédito">
 		<transition to="Analizar solicitud de crédito"></transition>
 	</node>
-	
-	<task-node name="Analizar solicitud de crédito" >
+
+	<task-node name="Analizar solicitud de crédito">
 		<task name="Analizar solicitud de crédito" swimlane="Analizador de Créditos">
-		
+
 		</task>
 		<transition to="Documentos Consistentes"></transition>
-	
+
 	</task-node>
 
 	<decision name="Documentos Consistentes">
@@ -59,20 +67,22 @@
 	</decision>
 
 	<decision name="Mayoria o Consenso">
-		<transition to="Aprobar, negar o aplazar crédito por consenso" name="to Aprobar, negar o aplazar crédito por consenso"></transition>
-		<transition to="Aprobar, negar o aplazar crédito por mayoría" name="to Aprobar, negar o aplazar crédito por mayoría"></transition>
+		<transition to="Aprobar, negar o aplazar crédito por consenso"
+			name="to Aprobar, negar o aplazar crédito por consenso"></transition>
+		<transition to="Aprobar, negar o aplazar crédito por mayoría"
+			name="to Aprobar, negar o aplazar crédito por mayoría"></transition>
 	</decision>
 
-	
-	<node name="Aprobar, negar o aplazar crédito por mayoría" >
 
-	
+	<node name="Aprobar, negar o aplazar crédito por mayoría">
+
+
 		<transition to="Aprobar, negar o aplazar crédito"></transition>
 	</node>
-	
-	<node name="Aprobar, negar o aplazar crédito por consenso" >
-			
-	
+
+	<node name="Aprobar, negar o aplazar crédito por consenso">
+
+
 		<transition to="Aprobar, negar o aplazar crédito"></transition>
 	</node>
 
@@ -82,11 +92,14 @@
 	</task-node>
 
 	<node name="Iniciar acción de acuerdo a votación ">
-		<transition to="Encaminar trabajo de acuerdo a la decisión del concejo, comité o comisión"></transition>
+		<transition
+			to="Encaminar trabajo de acuerdo a la decisión del concejo, comité o comisión"></transition>
 	</node>
 
-	<decision name="Encaminar trabajo de acuerdo a la decisión del concejo, comité o comisión">
-		<transition to="Comunicar decisión al analista de créditos y cliente" name="Aprobación o Negación"></transition>
+	<decision
+		name="Encaminar trabajo de acuerdo a la decisión del concejo, comité o comisión">
+		<transition to="Comunicar decisión al analista de créditos y cliente"
+			name="Aprobación o Negación"></transition>
 		<transition to="Analizar solicitud de crédito" name="Aplazado"></transition>
 	</decision>
 
@@ -96,6 +109,6 @@
 
 
 	<end-state name="Fin"></end-state>
-	
-	 
+
+
 </process-definition>

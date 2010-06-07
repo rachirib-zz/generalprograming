@@ -53,7 +53,7 @@ public class Ingreso {
 			//consulta las tareas pendientes del usuario logueado.
 			DelegadoConsultaTareas delegadoConsultaTareas = DelegadoConsultaTareas.getInstance();
 			//consulta las tareas pendientes de los usuarios para el proceso persistido en la bd.
-			String nombreProceso = "FabricaCredito"; 
+			String nombreProceso = "RadicarCredito"; 
 			try {
 				listaTareasPendientes =  delegadoConsultaTareas.consultaTareasPendientesUsuario(login,nombreProceso);				
 			} catch (Exception e) {
@@ -73,7 +73,7 @@ public class Ingreso {
 		
 		FacesUtils.getHttpSession(true).removeAttribute("prefiltro");
 		try{
-			String nombreProceso = "FabricaCredito";
+			String nombreProceso = "RadicarCredito";
 			DelegadoConsultaTareas delegadoConsultaTareas = DelegadoConsultaTareas.getInstance();
 			listaTareasPendientes =  delegadoConsultaTareas.consultaTareasPendientesUsuario(login,nombreProceso);
 			

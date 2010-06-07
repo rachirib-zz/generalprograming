@@ -147,11 +147,11 @@ public class RecepcionDatosRadicacion {
 			TaskVo taskVo = null;
 			if(processId!=null && taskId!=null ){
 				taskVo = delegadoConsultaTareas.consultaTareaProceso(taskId);
-				this.identificacionCliente = taskVo.getCustomerId();
-				this.nombreCliente  = taskVo.getCustumerName();
-				this.nombreCargo = taskVo.getNombreCargo();
+//				this.identificacionCliente = taskVo.getCustomerId();
+//				this.nombreCliente  = taskVo.getCustumerName();
+//				this.nombreCargo = taskVo.getNombreCargo();
 				this.taskId = taskVo.getTaskId();
-				this.bitacoraObservaciones = taskVo.getObservations();
+//				this.bitacoraObservaciones = taskVo.getObservations();
 			}//fin if
 			else{
 				this.identificacionCliente = null;
