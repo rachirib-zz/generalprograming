@@ -25,11 +25,11 @@
 									<ice:inputText />
 									<ice:outputText value="Ciudad" />
 									<ice:selectOneMenu>
-										<f:selectItems />
+										<f:selectItems value="#{recepcionDatosRadicacion.ciudades}" />
 									</ice:selectOneMenu>
 									<ice:outputText value="Tipo de Documento" />
 									<ice:selectOneMenu>
-										<f:selectItems />
+										<f:selectItems value="#{recepcionDatosRadicacion.tipoId}"/>
 									</ice:selectOneMenu>
 									<ice:outputText value="Nombre Completo" />
 									<ice:inputText />
@@ -39,18 +39,16 @@
 									<ice:inputText />
 									<ice:outputText value="Tipo de Solicitante" />
 									<ice:selectOneMenu>
-										<f:selectItems />
+										<f:selectItems value="#{recepcionDatosRadicacion.tipoSolicitante}"/>
 									</ice:selectOneMenu>
 									<ice:outputText value="Tipo de Contrato" />
 									<!-- Persona Natural -->
 									<ice:selectOneMenu>
-										<f:selectItems />
+										<f:selectItems value="#{recepcionDatosRadicacion.tipoContrato}"/>
 									</ice:selectOneMenu>
 									<ice:outputText value="Tiempo en Funcionamiento" />
 									<!-- Persona Juridico -->
-									<ice:selectOneMenu>
-										<f:selectItems />
-									</ice:selectOneMenu>
+									<ice:inputText />
 									<ice:outputText value="Dirección" />
 									<ice:inputText />
 									<ice:outputText value="Telefono Contacto" />

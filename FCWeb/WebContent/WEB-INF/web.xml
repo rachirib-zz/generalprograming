@@ -69,6 +69,16 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+		<description>
+			Servlet de inicializacion de componentes
+		</description>
+		<display-name>InicializacionComponentes</display-name>
+		<servlet-name>InicializacionComponentes</servlet-name>
+		<servlet-class>
+			co.com.fc.inicializacion.InicializacionComponentes</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
 </web-app>
 
 
