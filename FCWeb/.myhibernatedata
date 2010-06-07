@@ -1,0 +1,25 @@
+#MyEclipse Hibernate Properties
+#Sun Jun 06 23:35:44 COT 2010
+sessionFactoryName=co.com.fc.bd.model.HibernateSessionFactory
+genBasicCompId=false
+profile=
+daoSFId=
+version=3.1
+jndiPath=
+detectM2M=false
+reStrategyClass=
+detectO2O=false
+springDaoFile=
+useJavaTypes=true
+keyGenerator=
+libInstallFolder=<no jars/zips in selected libraries>
+addLibs2Project=true
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+genAnnotations=false
+reSettingsFile=
+configFile=/FCWeb/config/hibernate_oracle.cfg.xml
+createConfigFile=false
+addLibs2Classpath=true
+baseDaoClass=co.com.fc.bd.config.oracle.BaseHibernateDAO

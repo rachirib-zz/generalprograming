@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+	<property name="myeclipse.connection.profile">FabricaCreditos</property>
+	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+	<property name="connection.username">FC</property>
+	<property name="connection.password">FC</property>
+	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>
+
+	<mapping resource="co\com\fc\bd\model\FacrCredito.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrDocumento.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrInmuebleGarantia.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrLog.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrPParametro.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrPTipoParametro.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrReferencias.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrSolicitante.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\FacrUsuario.hbm.xml" />
+	<mapping resource="co\com\fc\bd\model\Localizacion.hbm.xml" />
+</session-factory>
+
+</hibernate-configuration>
