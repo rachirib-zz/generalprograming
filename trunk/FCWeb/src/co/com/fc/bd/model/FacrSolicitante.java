@@ -27,6 +27,7 @@ public class FacrSolicitante implements java.io.Serializable {
 	private Long numPersonasMayores;
 	private Long calificacion;
 	private Long edad;
+	private Long estadoCivil;
 	private Set facrDocumentos = new HashSet(0);
 	private Set facrCreditos = new HashSet(0);
 	private Set facrReferenciases = new HashSet(0);
@@ -41,7 +42,7 @@ public class FacrSolicitante implements java.io.Serializable {
 	public FacrSolicitante(String numId, Localizacion localizacion,
 			Long tipoId, String nombreSolicitante, Long tipoSolicitante,
 			String direccion, String telefonoContacto,
-			String telefonoResidencia, Long edad) {
+			String telefonoResidencia, Long edad, Long estadoCivil) {
 		this.numId = numId;
 		this.localizacion = localizacion;
 		this.tipoId = tipoId;
@@ -51,6 +52,7 @@ public class FacrSolicitante implements java.io.Serializable {
 		this.telefonoContacto = telefonoContacto;
 		this.telefonoResidencia = telefonoResidencia;
 		this.edad = edad;
+		this.estadoCivil = estadoCivil;
 	}
 
 	/** full constructor */
@@ -60,7 +62,7 @@ public class FacrSolicitante implements java.io.Serializable {
 			Long tiempoFuncionamiento, String direccion,
 			String telefonoContacto, String telefonoResidencia,
 			Long numPersonasMenores, Long numPersonasMayores,
-			Long calificacion, Long edad, Set facrDocumentos, Set facrCreditos,
+			Long calificacion, Long edad, Long estadoCivil, Set facrDocumentos, Set facrCreditos,
 			Set facrReferenciases) {
 		this.numId = numId;
 		this.localizacion = localizacion;
@@ -78,6 +80,7 @@ public class FacrSolicitante implements java.io.Serializable {
 		this.numPersonasMayores = numPersonasMayores;
 		this.calificacion = calificacion;
 		this.edad = edad;
+		this.estadoCivil = estadoCivil;
 		this.facrDocumentos = facrDocumentos;
 		this.facrCreditos = facrCreditos;
 		this.facrReferenciases = facrReferenciases;
@@ -85,8 +88,17 @@ public class FacrSolicitante implements java.io.Serializable {
 
 	// Property accessors
 
+	
 	public String getNumId() {
 		return this.numId;
+	}
+
+	public Long getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(Long estadoCivil) {
+		this.estadoCivil = estadoCivil;
 	}
 
 	public void setNumId(String numId) {
