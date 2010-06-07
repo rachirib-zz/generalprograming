@@ -26,74 +26,6 @@ public class RecepcionDatosRadicacion {
 	private String observaciones;
 	private String bitacoraObservaciones;
 	
-	private ParametroFacade parametroFacade = new ParametroFacade();
-	private LocalizacionFacade localizacionFacade = new LocalizacionFacade();
-	
-	private List<SelectItem> tipoId;
-	private List<SelectItem> tipoSolicitante;
-	private List<SelectItem> tipoContrato;
-	private List<SelectItem> ciudades;
-	
-	
-	
-	public List<SelectItem> getTipoSolicitante() {
-		tipoSolicitante = cargarValoresParametros(tipoSolicitante, 22L);
-		return tipoSolicitante;
-	}
-
-	public void setTipoSolicitante(List<SelectItem> tipoSolicitante) {
-		this.tipoSolicitante = tipoSolicitante;
-	}
-
-	public List<SelectItem> getTipoContrato() {
-		tipoContrato = cargarValoresParametros(tipoContrato, 23L);
-		return tipoContrato;
-	}
-
-	public void setTipoContrato(List<SelectItem> tipoContrato) {
-		this.tipoContrato = tipoContrato;
-	}
-
-	public List<SelectItem> getCiudades() {
-		if (ciudades == null) {
-			ciudades = new ArrayList<SelectItem>();
-		}else{
-			ciudades.clear();
-		}
-		List<Localizacion> lasLocalizaciones = null;
-		try {
-			ciudades.add(new SelectItem("-1", "[---Seleccione---]"));
-			
-			lasLocalizaciones = localizacionFacade.findByNivel(3L);
-			
-			if (lasLocalizaciones != null && !lasLocalizaciones.isEmpty()) {
-				for (Localizacion localizacion : lasLocalizaciones) {
-					ciudades.add(new SelectItem(localizacion.getConsLocalizacion().toString(), localizacion.getDescripcion()));
-				}
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			lasLocalizaciones = null;
-		}
-		
-		return ciudades;
-	}
-
-	public void setCiudades(List<SelectItem> ciudades) {
-		this.ciudades = ciudades;
-	}
-
-	public List<SelectItem> getTipoId() {
-		tipoId = cargarValoresParametros(tipoId, 21L);
-		return tipoId;
-	}
-
-	public void setTipoId(List<SelectItem> tipoId) {
-		this.tipoId = tipoId;
-	}
-
 	public String getBitacoraObservaciones() {
 		return bitacoraObservaciones;
 	}
@@ -221,36 +153,6 @@ public class RecepcionDatosRadicacion {
 
 	public void setNombreCargo(String nombreCargo) {
 		this.nombreCargo = nombreCargo;
-	}
-	
-	public List<SelectItem> cargarValoresParametros(List<SelectItem> listaSelects, Long codTipoParametro){
-		List<FacrPParametro> losParametros = null;
-		try {
-			if (listaSelects == null) {
-				listaSelects = new ArrayList<SelectItem>();
-			}else{
-				listaSelects.clear();
-			}
-			
-			listaSelects.add(new SelectItem("-1", "[---Seleccione---]"));
-			
-			losParametros = parametroFacade.findByTipoParametro(codTipoParametro);
-			
-			if (losParametros != null && !losParametros.isEmpty()) {
-				for (FacrPParametro facrPParametro : losParametros) {
-					listaSelects.add(new SelectItem(facrPParametro.getConsParamtro().toString(), facrPParametro.getValor()));
-				}
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally{
-			 losParametros = null;
-		}
-		
-		return listaSelects;
-		
-		
 	}
 	
 }
