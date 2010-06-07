@@ -5,19 +5,15 @@ public class TaskVo {
 	private String numberProcessDays;
 	private String createDate;
 	private String processId;
-	private String customerId;
-	private String custumerName;
 	private String taskId;
-	private String nombreCargo;
-	private String observations;
-	
+	private String idCredito;
 
-	public String getObservations() {
-		return observations;
+	public String getIdCredito() {
+		return idCredito;
 	}
 
-	public void setObservations(String observations) {
-		this.observations = observations;
+	public void setIdCredito(String idCredito) {
+		this.idCredito = idCredito;
 	}
 
 	public String getTaskId() {
@@ -60,28 +56,5 @@ public class TaskVo {
 		this.processId = processId;
 	}
 
-	public String getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getCustumerName() {
-		return custumerName;
-	}
-
-	public void setCustumerName(String custumerName) {
-		this.custumerName = custumerName;
-	}
-
-	public String getNombreCargo() {
-		return nombreCargo;
-	}
-
-	public void setNombreCargo(String nombreCargo) {
-		this.nombreCargo = nombreCargo;
-	}
 
 }
