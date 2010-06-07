@@ -1,13 +1,16 @@
 package co.com.fc.test;
 
+import co.com.fc.bd.facade.ParametroFacade;
 import co.com.fc.bd.facade.TipoParametroFacade;
+import co.com.fc.bd.model.FacrPParametro;
 import co.com.fc.bd.model.FacrPTipoParametro;
 
 public class Parametrizacion {
 
 	
 	public static void main(String[] args) {
-		tipoParametro();
+//		tipoParametro();
+//		parametros();
 	}
 	
 	public static void tipoParametro(){
@@ -15,12 +18,27 @@ public class Parametrizacion {
 		try {
 			FacrPTipoParametro tipoParametro = new FacrPTipoParametro();
 			TipoParametroFacade parametroFacade = new TipoParametroFacade();
-			tipoParametro.setValor("Tipo Documentos");
-			tipoParametro.setDescripcion("Tipo Documentos");
+			tipoParametro.setValor("Estados Genericos");
+			tipoParametro.setDescripcion("Estados Genericos");
 			parametroFacade.save(tipoParametro);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void parametros(){
+		try {
+			FacrPParametro parametro = new FacrPParametro();
+			ParametroFacade parametroFacade = new ParametroFacade();
+			FacrPTipoParametro facrPTipoParametro = new FacrPTipoParametro();
+			facrPTipoParametro.setConsTipoParametro(27L);
+			parametro.setValor("Inactivo");
+			parametro.setDescripcion("Inactivo");
+			parametro.setFacrPTipoParametro(facrPTipoParametro);
+			parametroFacade.save(parametro);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

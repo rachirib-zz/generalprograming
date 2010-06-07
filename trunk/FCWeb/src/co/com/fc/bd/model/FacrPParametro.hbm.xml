@@ -8,7 +8,9 @@
     <class name="co.com.fc.bd.model.FacrPParametro" table="FACR_P_PARAMETRO" schema="FC">
         <id name="consParamtro" type="java.lang.Long">
             <column name="CONS_PARAMTRO" precision="10" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence">
+				<param name="sequence">SEQU_FACR_PARA </param>
+			</generator>
         </id>
         <many-to-one name="facrPTipoParametro" class="co.com.fc.bd.model.FacrPTipoParametro" fetch="select">
             <column name="CONS_TIPO_PARAMETRO" precision="10" scale="0" not-null="true" />
