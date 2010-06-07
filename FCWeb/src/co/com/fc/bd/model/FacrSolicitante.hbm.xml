@@ -55,6 +55,9 @@
         <property name="edad" type="java.lang.Long">
             <column name="EDAD" precision="10" scale="0" not-null="true" />
         </property>
+         <property name="estadoCivil" type="java.lang.Long">
+            <column name="ESTADO_CIVIL" precision="10" scale="0" not-null="true" />
+        </property>
         <set name="facrDocumentos" inverse="true">
             <key>
                 <column name="NUM_ID" length="20" not-null="true" />
