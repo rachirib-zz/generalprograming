@@ -29,6 +29,7 @@ public class RecepcionDatosRadicacion {
 	private String bitacoraObservaciones;
 	
 	private InformacionPersonalVista informacionPersonalVista;
+	private CreditoVista creditoVista;
 	
 	private boolean tabReferencias;
 	private boolean tabCredito;
@@ -113,6 +114,7 @@ public class RecepcionDatosRadicacion {
 			tabReferencias = true;
 			
 			informacionPersonalVista = (InformacionPersonalVista)FacesUtils.getManagedBean("informacionPersonalVista");
+			creditoVista = (CreditoVista)FacesUtils.getManagedBean("creditoVista");
 			
 			TaskVo taskVo = null;
 			if(processId!=null && taskId!=null ){
@@ -206,17 +208,23 @@ public class RecepcionDatosRadicacion {
 	}
 	public String aceptaReferencias(){
 		try {
+			
+			
 			tabCredito = false;
 		} catch (Exception e) {
 			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage(e.getMessage()));
 		}
 		return "";
 	}
 	public String aceptaCredito(){
 		try {
+			creditoVista.save();
+			
 			tabInmuebles = false;
 		} catch (Exception e) {
 			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage(e.getMessage()));
 		}
 		return "";
 	}

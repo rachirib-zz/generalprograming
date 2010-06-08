@@ -10,7 +10,7 @@ public class Parametrizacion {
 	
 	public static void main(String[] args) {
 //		tipoParametro();
-//		parametros();
+		parametros();
 	}
 	
 	public static void tipoParametro(){
@@ -32,9 +32,9 @@ public class Parametrizacion {
 			FacrPParametro parametro = new FacrPParametro();
 			ParametroFacade parametroFacade = new ParametroFacade();
 			FacrPTipoParametro facrPTipoParametro = new FacrPTipoParametro();
-			facrPTipoParametro.setConsTipoParametro(30L);
-			parametro.setValor("Referencia Comercial");
-			parametro.setDescripcion("Referencia Comercial");
+			facrPTipoParametro.setConsTipoParametro(26L);
+			parametro.setValor("Negado a revision");
+			parametro.setDescripcion("Negado a revision");
 			parametro.setFacrPTipoParametro(facrPTipoParametro);
 			parametroFacade.save(parametro);
 		} catch (Exception e) {

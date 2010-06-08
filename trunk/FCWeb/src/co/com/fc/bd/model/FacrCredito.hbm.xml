@@ -8,7 +8,9 @@
     <class name="co.com.fc.bd.model.FacrCredito" table="FACR_CREDITO" schema="FC">
         <id name="consCredito" type="java.lang.Long">
             <column name="CONS_CREDITO" precision="10" scale="0" />
-            <generator class="assigned" />
+            <generator class="sequence">
+				<param name="sequence">SEQU_FACR_CRED </param>
+			</generator>
         </id>
         <many-to-one name="facrSolicitante" class="co.com.fc.bd.model.FacrSolicitante" fetch="select">
             <column name="NUM_ID" length="20" not-null="true" />

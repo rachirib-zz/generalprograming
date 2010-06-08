@@ -176,15 +176,17 @@
 							<center>
 								<ice:panelGrid columns="2">
 									<ice:outputText value="Monto del Credito" />
-									<ice:inputText />
-									<ice:outputText value="Fecha de Solicitud" />
-									<ice:selectInputDate renderAsPopup="true">
+									<ice:inputText binding="#{creditoVista.txtMontoCredito}"/>
+									<!--<ice:outputText value="Fecha de Solicitud" />
+									<ice:selectInputDate renderAsPopup="true" binding="#{creditoVista.fechaCredito}">
 										<f:convertDateTime pattern="dd/MM/yyyy" timeZone="GMT-5" />
-									</ice:selectInputDate>
+									</ice:selectInputDate>-->
 								</ice:panelGrid>
+								<br />
+								<ice:messages />
 							</center>
 							<div align="right">
-								<ice:commandButton value="Siguiente" />
+								<ice:commandButton value="Siguiente" action="#{recepcionDatosRadicacion.aceptaCredito}"/>
 							</div>
 
 						</ice:panelTab>

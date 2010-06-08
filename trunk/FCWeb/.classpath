@@ -14,6 +14,16 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jbpm-jpdl.jar"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.hibernate.MYECLIPSE_HIBERNATE3_1_EXTRAS"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ojdbc14.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/AprobacionCreditoRules"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/antlr-runtime-3.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-api-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-compiler-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-core-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-decisiontables-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-repository-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-templates-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/drools-verifier-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mvel2-2.0.10.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bsh.jar"/>
 	<classpathentry kind="output" path="WebContent/WEB-INF/classes"/>
 </classpath>
