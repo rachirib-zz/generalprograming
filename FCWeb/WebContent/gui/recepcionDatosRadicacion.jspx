@@ -20,82 +20,121 @@
 					<ice:panelTabSet>
 						<ice:panelTab label="Información Solicitante">
 							<center>
-								<ice:panelGrid columns="2">
+								<ice:panelGrid columns="4">
 									<ice:outputText value="Numero de Idenficación" />
-									<ice:inputText />
-									<ice:outputText value="Ciudad" />
-									<ice:selectOneMenu>
-										<f:selectItems value="#{recepcionDatosRadicacion.ciudades}" />
-									</ice:selectOneMenu>
-									<ice:outputText value="Tipo de Documento" />
-									<ice:selectOneMenu>
-										<f:selectItems value="#{recepcionDatosRadicacion.tipoId}"/>
-									</ice:selectOneMenu>
+									<ice:inputText binding="#{informacionPersonalVista.txtNumId}"
+										valueChangeListener="#{informacionPersonalVista.listenerCedula}"
+										partialSubmit="true" />
 									<ice:outputText value="Nombre Completo" />
-									<ice:inputText />
-									<ice:outputText value="Ingresos" />
-									<ice:inputText />
-									<ice:outputText value="Egresos" />
-									<ice:inputText />
+									<ice:inputText binding="#{informacionPersonalVista.txtNombre}" />
+									<ice:outputText value="Tipo de Documento" />
+									<ice:selectOneMenu
+										binding="#{informacionPersonalVista.cmbTipoId}">
+										<f:selectItems value="#{informacionPersonalVista.tipoId}" />
+									</ice:selectOneMenu>
 									<ice:outputText value="Tipo de Solicitante" />
-									<ice:selectOneMenu>
-										<f:selectItems value="#{recepcionDatosRadicacion.tipoSolicitante}"/>
+									<ice:selectOneMenu
+										binding="#{informacionPersonalVista.cmbTipoSolicitante}">
+										<f:selectItems
+											value="#{informacionPersonalVista.tipoSolicitante}" />
 									</ice:selectOneMenu>
-									<ice:outputText value="Tipo de Contrato" />
-									<!-- Persona Natural -->
-									<ice:selectOneMenu>
-										<f:selectItems value="#{recepcionDatosRadicacion.tipoContrato}"/>
-									</ice:selectOneMenu>
+									<ice:outputText value="Edad" />
+									<ice:inputText binding="#{informacionPersonalVista.txtEdad}" />
+									<ice:outputText value="Calificacion" />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtCalificacion}" />
 									<ice:outputText value="Tiempo en Funcionamiento" />
 									<!-- Persona Juridico -->
-									<ice:inputText />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtTiempoFuncionamiento}" />
+									<ice:outputText value="Estado Civil" />
+									<ice:selectOneMenu
+										binding="#{informacionPersonalVista.cmbEstadoCivil}">
+										<f:selectItems value="#{informacionPersonalVista.estadoCivil}" />
+									</ice:selectOneMenu>
+									<ice:outputText value="Ciudad" />
+									<ice:selectOneMenu
+										binding="#{informacionPersonalVista.cmbCiudades}">
+										<f:selectItems value="#{informacionPersonalVista.ciudades}" />
+									</ice:selectOneMenu>
 									<ice:outputText value="Dirección" />
-									<ice:inputText />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtDireccion}" />
 									<ice:outputText value="Telefono Contacto" />
-									<ice:inputText />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtTelefonoContacto}" />
 									<ice:outputText value="Telefono Residencia" />
-									<ice:inputText />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtTelefonoPersonal}" />
+									<ice:outputText value="Ingresos" />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtIngresos}" />
+									<ice:outputText value="Egresos" />
+									<ice:inputText binding="#{informacionPersonalVista.txtEgresos}" />
+									<ice:outputText value="Tipo de Contrato" />
+									<!-- Persona Natural -->
+									<ice:selectOneMenu
+										binding="#{informacionPersonalVista.cmbTipoContrato}">
+										<f:selectItems
+											value="#{informacionPersonalVista.tipoContrato}" />
+									</ice:selectOneMenu>
 									<ice:outputText value="Numero de Personas Menores a Cargo" />
-									<ice:inputText />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtNumPersonasMenores}" />
 									<ice:outputText value="Numero de Personas Mayores a Cargo" />
-									<ice:inputText />
+									<ice:inputText
+										binding="#{informacionPersonalVista.txtNumPersonasMayores}" />
 								</ice:panelGrid>
+								<br />
+								<ice:messages />
 							</center>
 							<div align="right">
-								<ice:commandButton value="Siguiente" />
+								<ice:commandButton value="Limpiar Forma"
+									action="#{informacionPersonalVista.limpiarForma}" />
+								<ice:commandButton value="Siguiente"
+									action="#{recepcionDatosRadicacion.aceptaInformacionPersonal}" />
 							</div>
 						</ice:panelTab>
 
 
 						<!-- Tabla de Referencias -->
-						<ice:panelTab label="Referencias">
+						<ice:panelTab label="Referencias"
+							disabled="#{recepcionDatosRadicacion.tabReferencias}">
 							<center>
 								<ice:panelGrid columns="2">
 									<ice:outputText value="Numero de Idenficación" />
-									<ice:inputText />
+									<ice:inputText binding="#{referenciasVista.txtNumId}" />
 									<ice:outputText value="Nombre Completo" />
-									<ice:inputText />
+									<ice:inputText binding="#{referenciasVista.txtNombre}" />
 									<ice:outputText value="Parentesco" />
-									<ice:inputText />
+									<ice:selectOneMenu binding="#{referenciasVista.cmbParentesco}">
+										<f:selectItems value="#{referenciasVista.parentesco}" />
+									</ice:selectOneMenu>
+									<ice:outputText value="Direccion" />
+									<ice:inputText binding="#{referenciasVista.txtDireccion}" />
 									<ice:outputText value="Telefono Contacto" />
-									<ice:inputText />
+									<ice:inputText binding="#{referenciasVista.txtTelefono}" />
 									<ice:outputText value="Tipo de Referencia" />
-									<ice:selectOneMenu>
-										<f:selectItems />
+									<ice:selectOneMenu
+										binding="#{referenciasVista.cmbTipoReferencia}">
+										<f:selectItems value="#{referenciasVista.tipoReferencia}" />
 									</ice:selectOneMenu>
 								</ice:panelGrid>
 
-								<ice:commandButton value="Adicionar" />
-								<ice:commandButton value="Modificar" disabled="true" />
-								<ice:commandButton value="Eliminar" disabled="true" />
-								<ice:commandButton value="Limpiar" />
+								<ice:commandButton value="Adicionar"
+									action="#{referenciasVista.save}"
+									disabled="#{!referenciasVista.guardar}" />
+								<ice:commandButton value="Modificar"
+									disabled="#{referenciasVista.guardar}" />
+								<ice:commandButton value="Eliminar"
+									disabled="#{referenciasVista.guardar}" />
+								<ice:commandButton value="Limpiar"
+									action="#{referenciasVista.limpiarForma}" />
 								<br />
-								<ice:dataTable>
-
+								<ice:dataTable value="#{referenciasVista.lasReferencias}" var="refe">
 									<f:facet name="header">
 										<ice:columnGroup>
 											<ice:headerRow>
-
 												<ice:column>
 													<ice:outputText value="Idenficación" />
 												</ice:column>
@@ -103,39 +142,37 @@
 													<ice:outputText value="Nombre" />
 												</ice:column>
 												<ice:column>
+													<ice:outputText value="Direccion" />
+												</ice:column>
+												<ice:column>
 													<ice:outputText value="Telefono" />
 												</ice:column>
-												<ice:column>
-													<ice:outputText value="Parentesco" />
-												</ice:column>
-												<ice:column>
-													<ice:outputText value="Tipo Referencia" />
-												</ice:column>
-
 											</ice:headerRow>
 										</ice:columnGroup>
 									</f:facet>
 									<ice:column>
-										<ice:outputText />
+										<ice:outputText value="#{refe.identificacion}"/>
 									</ice:column>
 									<ice:column>
-										<ice:outputText />
+										<ice:outputText value="#{refe.nombre}"/>
 									</ice:column>
 									<ice:column>
-										<ice:outputText />
+										<ice:outputText value="#{refe.direccion}"/>
 									</ice:column>
 									<ice:column>
-										<ice:outputText />
+										<ice:outputText value="#{refe.telefono}"/>
 									</ice:column>
-									<ice:column>
-										<ice:outputText />
-									</ice:column>
-
 								</ice:dataTable>
-
+								<br />
+								<ice:messages />
 							</center>
+							<div align="right">
+								<ice:commandButton value="Siguiente"
+									action="#{recepcionDatosRadicacion.aceptaReferencias}" />
+							</div>
 						</ice:panelTab>
-						<ice:panelTab label="Información Basica del Credito">
+						<ice:panelTab label="Información Basica del Credito"
+							disabled="#{recepcionDatosRadicacion.tabCredito}">
 							<center>
 								<ice:panelGrid columns="2">
 									<ice:outputText value="Monto del Credito" />
@@ -153,7 +190,8 @@
 						</ice:panelTab>
 
 						<!-- Tabla de Inmuebles del Credito -->
-						<ice:panelTab label="Inmuebles del Credito">
+						<ice:panelTab label="Inmuebles del Credito"
+							disabled="#{recepcionDatosRadicacion.tabInmuebles}">
 							<center>
 								<ice:panelGrid columns="2">
 									<ice:outputText value="Tipo de Inmueble" />

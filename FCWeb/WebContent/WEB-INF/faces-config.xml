@@ -9,17 +9,31 @@
 		<managed-bean-class>co.com.fc.view.RecepcionDatosRadicacion</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>informacionPersonalVista</managed-bean-name>
+		<managed-bean-class>co.com.fc.view.InformacionPersonalVista</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>referenciasVista</managed-bean-name>
+		<managed-bean-class>co.com.fc.view.ReferenciasVista</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+
 	<managed-bean>
 		<managed-bean-name>ingreso</managed-bean-name>
 		<managed-bean-class>co.com.fc.view.Ingreso</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
- <navigation-rule>
-  <from-view-id>*</from-view-id>
-	<navigation-case>
-		<from-outcome>bandeja_solicitudes</from-outcome>
-		<to-view-id>/gui/bandeja/bandejaSolicitudes.iface</to-view-id>
-		<redirect />
-	</navigation-case>
-</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>bandeja_solicitudes</from-outcome>
+			<to-view-id>/gui/bandeja/bandejaSolicitudes.iface</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>
