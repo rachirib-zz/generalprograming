@@ -1,19 +1,23 @@
 package co.com.fc.model;
 
+import co.com.fc.bd.model.FacrCredito;
+
 public class TaskVo {
 	private String taskName;
 	private String numberProcessDays;
 	private String createDate;
 	private String processId;
 	private String taskId;
-	private String idCredito;
+	private FacrCredito facrCredito;
 
-	public String getIdCredito() {
-		return idCredito;
+
+
+	public FacrCredito getFacrCredito() {
+		return facrCredito;
 	}
 
-	public void setIdCredito(String idCredito) {
-		this.idCredito = idCredito;
+	public void setFacrCredito(FacrCredito facrCredito) {
+		this.facrCredito = facrCredito;
 	}
 
 	public String getTaskId() {

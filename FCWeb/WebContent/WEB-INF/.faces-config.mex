@@ -3,10 +3,19 @@
   <Drawing gridVisible="true" snapOn="true" />
   <JSFFlowResource path="*" location="30,30" dimension="49,36" />
   <JSFFlowResource path="/gui/bandeja/bandejaSolicitudes.iface" location="180,30" dimension="245,36" />
-  <JSFFlowNavigationCase id="*,/gui/bandeja/bandejaSolicitudes.iface,bandeja_solicitudes,&lt;empty&gt;" routingType="0">
+  <JSFFlowResource path="/gui/recepcionDatosRadicacion.jspx" location="480,30" dimension="234,36" />
+  <JSFFlowNavigationCase id="*,/gui/bandeja/bandejaSolicitudes.iface,bandeja_solicitudes,&lt;empty&gt;" routingType="1">
     <AutomaticBendpoints>
       <AbsolutePoint location="79,48" />
       <AbsolutePoint location="180,48" />
+    </AutomaticBendpoints>
+  </JSFFlowNavigationCase>
+  <JSFFlowNavigationCase id="*,/gui/recepcionDatosRadicacion.jspx,solicitud_credito,&lt;empty&gt;" routingType="0">
+    <AutomaticBendpoints>
+      <AbsolutePoint location="54,30" />
+      <AbsolutePoint location="54,-7" />
+      <AbsolutePoint location="597,-7" />
+      <AbsolutePoint location="597,30" />
     </AutomaticBendpoints>
   </JSFFlowNavigationCase>
 </JSFFlowViewLayout>

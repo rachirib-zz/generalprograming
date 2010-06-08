@@ -54,7 +54,7 @@
 									<tr>
 										<td align="center" colspan="2">
 											<ice:commandButton id="btn_enviar"  action="#{ingreso.validarIngresoUsuario}"
-												value="Enviar" /> &nbsp;
+												value="Enviar" /> 
 												<ice:commandButton id="btn_limpiar"  action="#{ingreso.limpiarDatos}"
 												value="Limpiar" />
 										</td>

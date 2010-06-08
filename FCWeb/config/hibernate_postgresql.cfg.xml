@@ -17,34 +17,31 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
 		<!--
-			JDBC connection properties (begin) === <property
-			name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-			<property
-			name="hibernate.connection.url">jdbc:postgresql://localhost:5432/JBPM</property>
+			JDBC connection properties (begin) === 
+			<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+			<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/JBPM</property>
 			<property name="hibernate.connection.username">JBPM</property>
-			<property name="hibernate.connection.password">JBPM</property> ===
-			JDBC connection properties (end)
-		-->
+			<property name="hibernate.connection.password">JBPM</property> 
+		 === JDBC connection properties (end) -->
 
-		<!-- DataSource properties (begin) -->
+		<!-- DataSource properties (begin)--> 
 		<property name="hibernate.connection.datasource">java:JbpmDS</property>
 		<!-- DataSource properties (end) -->
 
 		<!--
-			JTA transaction properties (begin) === <property
+			JTA transaction properties (begin) === 
+			<property
 			name="hibernate.transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
 			<property
 			name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
 			==== JTA transaction properties (end)
 		-->
 
-		<!--
-			CMT transaction properties (begin) === <property
-			name="hibernate.transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
-			<property
-			name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
-			==== CMT transaction properties (end)
-		-->
+		<!-- CMT transaction properties (begin) ===--> 
+			<property	name="hibernate.transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
+			<property	name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<!--==== CMT transaction properties (end)-->
+		
 
 		<!-- ################################### -->
 		<!-- # common settings                 # -->

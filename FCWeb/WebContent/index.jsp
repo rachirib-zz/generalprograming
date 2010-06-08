@@ -1,6 +1,6 @@
 <html>
 <head />
 <body>
-<jsp:forward page="inicio.iface" />
+<jsp:forward page="inicio.jspx" />
 </body>
 </html>
