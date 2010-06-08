@@ -1,0 +1,79 @@
+#created on: 7/06/2010
+package co.com.fc.rules.rules
+
+#list any import classes here.
+
+import co.com.fc.rules.dto.*
+
+#declare any global variables here
+
+
+
+
+rule "Aprobacion regla"
+salience 1
+	when
+		aprobacion:AprobacionCreditoDTO( acierta > 600 ) 
+			and AprobacionCreditoDTO( edad >= 25 ) 
+			and AprobacionCreditoDTO( edad <= 45 ) 
+			and AprobacionCreditoDTO( estadoCivil == 42 )
+	then 
+		aprobacion.setAprobado(35L);
+		
+end
+rule "Credito en revision"
+salience 2
+	when
+		aprobacion:AprobacionCreditoDTO( acierta > 600 ) 
+			and AprobacionCreditoDTO( edad >= 25 ) 
+			and AprobacionCreditoDTO( edad <= 45 ) 
+			and AprobacionCreditoDTO( estadoCivil == 41 )
+	then 
+		aprobacion.setAprobado(38L);
+		
+end
+rule "Negado a revision 1"
+salience 3
+	when
+		aprobacion:AprobacionCreditoDTO( acierta <= 600 ) 
+			and AprobacionCreditoDTO( edad >= 25 ) 
+			and AprobacionCreditoDTO( edad <= 45 ) 
+			and AprobacionCreditoDTO( estadoCivil == 42 )
+	then 
+		aprobacion.setAprobado(54L);
+		
+end
+rule "Negado a revision 2"
+salience 4
+	when
+		aprobacion:AprobacionCreditoDTO( acierta > 600 ) 
+			and AprobacionCreditoDTO( edad < 25 ) 
+			or AprobacionCreditoDTO( edad > 45 ) 
+			and AprobacionCreditoDTO( estadoCivil == 42 )
+	then 
+		aprobacion.setAprobado(54L);
+		
+end
+rule "Negado a revision 3"
+salience 5
+	when
+		aprobacion:AprobacionCreditoDTO( acierta > 600 ) 
+			and AprobacionCreditoDTO( edad >= 25 ) 
+			and AprobacionCreditoDTO( edad <= 45 ) 
+			and AprobacionCreditoDTO( estadoCivil != 41 )
+			and AprobacionCreditoDTO( estadoCivil != 42 )
+	then 
+		aprobacion.setAprobado(54L);
+		
+end
+rule "Rechazo inmediato regla"
+salience 6
+	when
+		aprobacion:AprobacionCreditoDTO( acierta <= 600 ) 
+			and AprobacionCreditoDTO( edad < 25 ) 
+			or AprobacionCreditoDTO( edad > 45 ) 
+			and AprobacionCreditoDTO( estadoCivil != 42 )
+	then 
+		aprobacion.setAprobado(36L);
+		
+end
