@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 
@@ -26,6 +28,36 @@ public class RecepcionDatosRadicacion {
 	private String observaciones;
 	private String bitacoraObservaciones;
 	
+	private InformacionPersonalVista informacionPersonalVista;
+	
+	private boolean tabReferencias;
+	private boolean tabCredito;
+	private boolean tabInmuebles;
+	
+	public boolean isTabReferencias() {
+		return tabReferencias;
+	}
+
+	public void setTabReferencias(boolean tabReferencias) {
+		this.tabReferencias = tabReferencias;
+	}
+
+	public boolean isTabCredito() {
+		return tabCredito;
+	}
+
+	public void setTabCredito(boolean tabCredito) {
+		this.tabCredito = tabCredito;
+	}
+
+	public boolean isTabInmuebles() {
+		return tabInmuebles;
+	}
+
+	public void setTabInmuebles(boolean tabInmuebles) {
+		this.tabInmuebles = tabInmuebles;
+	}
+
 	public String getBitacoraObservaciones() {
 		return bitacoraObservaciones;
 	}
@@ -76,6 +108,12 @@ public class RecepcionDatosRadicacion {
 		String taskId  = (String)FacesUtils.getHttpSession(true).getAttribute("taskId");
 		DelegadoConsultaTareas delegadoConsultaTareas = DelegadoConsultaTareas.getInstance();
 		try {
+			tabCredito = true;
+			tabInmuebles = true;
+			tabReferencias = true;
+			
+			informacionPersonalVista = (InformacionPersonalVista)FacesUtils.getManagedBean("informacionPersonalVista");
+			
 			TaskVo taskVo = null;
 			if(processId!=null && taskId!=null ){
 				taskVo = delegadoConsultaTareas.consultaTareaProceso(taskId);
@@ -153,6 +191,42 @@ public class RecepcionDatosRadicacion {
 
 	public void setNombreCargo(String nombreCargo) {
 		this.nombreCargo = nombreCargo;
+	}
+	
+	public String aceptaInformacionPersonal(){
+		try {
+			informacionPersonalVista.save();
+			
+			tabReferencias = false;
+		} catch (Exception e) {
+			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage(e.getMessage()));
+		}
+		return "";
+	}
+	public String aceptaReferencias(){
+		try {
+			tabCredito = false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	public String aceptaCredito(){
+		try {
+			tabInmuebles = false;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	public String aceptaInmuebles(){
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 	
 }

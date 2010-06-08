@@ -18,8 +18,8 @@ public class Parametrizacion {
 		try {
 			FacrPTipoParametro tipoParametro = new FacrPTipoParametro();
 			TipoParametroFacade parametroFacade = new TipoParametroFacade();
-			tipoParametro.setValor("Estados Genericos");
-			tipoParametro.setDescripcion("Estados Genericos");
+			tipoParametro.setValor("Tipos Referencias");
+			tipoParametro.setDescripcion("Tipos Referencias");
 			parametroFacade.save(tipoParametro);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,9 +32,9 @@ public class Parametrizacion {
 			FacrPParametro parametro = new FacrPParametro();
 			ParametroFacade parametroFacade = new ParametroFacade();
 			FacrPTipoParametro facrPTipoParametro = new FacrPTipoParametro();
-			facrPTipoParametro.setConsTipoParametro(27L);
-			parametro.setValor("Inactivo");
-			parametro.setDescripcion("Inactivo");
+			facrPTipoParametro.setConsTipoParametro(30L);
+			parametro.setValor("Referencia Comercial");
+			parametro.setDescripcion("Referencia Comercial");
 			parametro.setFacrPTipoParametro(facrPTipoParametro);
 			parametroFacade.save(parametro);
 		} catch (Exception e) {
