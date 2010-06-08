@@ -58,6 +58,7 @@ public class Ingreso {
 				listaTareasPendientes =  delegadoConsultaTareas.consultaTareasPendientesUsuario(login,nombreProceso);				
 			} catch (Exception e) {
 				FacesUtils.addErrorMessage(e.getMessage());
+				e.printStackTrace();
 			}
 
 			
@@ -84,9 +85,9 @@ public class Ingreso {
 		return gui;
 	}
 	
-	public String irARadicarSolicitudPersonal(){
-		String gui = "solicitud_personal";
-		FacesUtils.resetManagedBean("solicitudPersonal");
+	public String irRadicarSolicitud(){
+		String gui = "solicitud_credito";
+//		FacesUtils.resetManagedBean("solicitudPersonal");
 		return gui;
 	}
 	
