@@ -65,86 +65,96 @@ public class DelegadoConsultaTareas {
 		LogicaFlujo logicaFlujo = LogicaFlujo.getInstance();
 		//1.crea el contexto de persitencia para poder
 		//  realizar consultas a la bd.
-		JbpmContext jbpmContext =  logicaFlujo.creaContextPersistencia();
-		//2.Obtiene el objeto GraphSession para manipular el proceso
-		//  almacenado en la bd.
-		GraphSession graphSession = jbpmContext.getGraphSession();
-		if(graphSession == null)
-			throw new Exception("[Error - No se pudo obtener el objeto de sesión gráfica de proceso ..]");
-
-		//3. Obtiene la última definición de proceso que se haya almacenado
-		//   en la base de datos
-
-		List<ProcessDefinition> graf = graphSession.findAllProcessDefinitions();
-		ProcessDefinition processDefinition = graphSession.findLatestProcessDefinition(nombreProceso);
-
 		
-		if(processDefinition == null)
-			throw new Exception("[No se ha encontrado ningún proceso de negocio en el motor de procesos ..]");
+		JbpmContext jbpmContext  = null;
+		try {
+			jbpmContext = logicaFlujo.creaContextPersistencia();
+			//2.Obtiene el objeto GraphSession para manipular el proceso
+			//  almacenado en la bd.
+			GraphSession graphSession = jbpmContext.getGraphSession();
+			if(graphSession == null)
+				throw new Exception("[Error - No se pudo obtener el objeto de sesión gráfica de proceso ..]");
 
-		String[] taskUser = new String[1];
-		taskUser[0] = idUser;
+			//3. Obtiene la última definición de proceso que se haya almacenado
+			//   en la base de datos
 
+			ProcessDefinition processDefinition = graphSession.findLatestProcessDefinition(nombreProceso);
 
+			
+			if(processDefinition == null)
+				throw new Exception("[No se ha encontrado ningún proceso de negocio en el motor de procesos ..]");
 
-		//4. crea la instancia del proceso para la definicón de proceso especificada.
-		//ProcessInstance processInstance  =  new ProcessInstance(processDefinition);
-		//5. Obtiene el objeto TaskMgmtSession que permite consultar las 
-		//   tareas pendientes para un usuario determinado, en este caso el que 
-		//   se logue en la aplicación.
-		TaskMgmtSession taskMgmtSession = jbpmContext.getTaskMgmtSession();
-		List taskByUser = taskMgmtSession.findTaskInstances(taskUser[0]);
-
-		//		taskMgmtSession.findTaskInstances(
-
-		if(taskByUser == null || taskByUser.size() == 0)
-			throw new Exception("[No se han econtrado tareas pendientes ..]");
-		else
-			listaTareas = new ArrayList<TaskVo>();
-
-		for (Iterator iterator = taskByUser.iterator(); iterator.hasNext();) {
-			TaskInstance taskInstance = (TaskInstance) iterator.next();
-			//solo consulta las que no esten bloqueadas y que esten pendientes
-			if(taskInstance!=null && !taskInstance.isBlocking()){
-				TaskVo taskVo =  new TaskVo();
-				//asigna el nombre de la tarea
-				taskVo.setTaskName(taskInstance.getName());
-				String fechaCreacionTarea = DateManipultate.dateToStringConFormato(taskInstance.getCreate(), "dd/MM/yyyy");
-				//asigna la fecha de creación de la tarea
-				taskVo.setCreateDate(fechaCreacionTarea);
-				//asigna el consecutivo de la instancia del proceso
-				taskVo.setProcessId(String.valueOf(taskInstance.getToken().getProcessInstance().getId()));
-				Date fechaActual = new Date();
-				//6. calcula el número de días transcurridos entre la fecha
-				//   actual y la fecha de creación de cada tarea consultada.
-				String diasProceso = String.valueOf(DateManipultate.calculaTiempoTranascurridoDias(fechaActual,taskInstance.getCreate())); 
-
-				taskVo.setNumberProcessDays(diasProceso); 
-				//obtiene el id del cliente del contexto del proceso
-
-				String customerId = "";
-
-				try{
-					customerId = (String) taskInstance.getToken().getProcessInstance().getContextInstance().getVariable("identificacion");
-				}catch(Exception ex){
-
-				}
-
-				String customerName = (String) taskInstance.getToken().getProcessInstance().getContextInstance().getVariable("nombreCliente");
-
-				//obtiene el nombre del cliente del contexto del proceso.
-				//				taskVo.setCustumerName(customerName!=null?customerName:"- sin valor -");
-				taskVo.setTaskId(String.valueOf(taskInstance.getId()));
-
-				listaTareas.add(taskVo);
-
-			}//fin if
+			String[] taskUser = new String[1];
+			taskUser[0] = idUser;
 
 
 
-		}//fin for
+			//4. crea la instancia del proceso para la definicón de proceso especificada.
+			//ProcessInstance processInstance  =  new ProcessInstance(processDefinition);
+			//5. Obtiene el objeto TaskMgmtSession que permite consultar las 
+			//   tareas pendientes para un usuario determinado, en este caso el que 
+			//   se logue en la aplicación.
+			TaskMgmtSession taskMgmtSession = jbpmContext.getTaskMgmtSession();
+			List taskByUser = taskMgmtSession.findTaskInstances(taskUser[0]);
 
-		jbpmContext.close();
+			//		taskMgmtSession.findTaskInstances(
+
+			if(taskByUser == null || taskByUser.size() == 0)
+				throw new Exception("[No se han econtrado tareas pendientes ..]");
+			else
+				listaTareas = new ArrayList<TaskVo>();
+
+			for (Iterator iterator = taskByUser.iterator(); iterator.hasNext();) {
+				TaskInstance taskInstance = (TaskInstance) iterator.next();
+				//solo consulta las que no esten bloqueadas y que esten pendientes
+				if(taskInstance!=null && !taskInstance.isBlocking()){
+					TaskVo taskVo =  new TaskVo();
+					//asigna el nombre de la tarea
+					taskVo.setTaskName(taskInstance.getName());
+					String fechaCreacionTarea = DateManipultate.dateToStringConFormato(taskInstance.getCreate(), "dd/MM/yyyy");
+					//asigna la fecha de creación de la tarea
+					taskVo.setCreateDate(fechaCreacionTarea);
+					//asigna el consecutivo de la instancia del proceso
+					taskVo.setProcessId(String.valueOf(taskInstance.getToken().getProcessInstance().getId()));
+					Date fechaActual = new Date();
+					//6. calcula el número de días transcurridos entre la fecha
+					//   actual y la fecha de creación de cada tarea consultada.
+					String diasProceso = String.valueOf(DateManipultate.calculaTiempoTranascurridoDias(fechaActual,taskInstance.getCreate())); 
+
+					taskVo.setNumberProcessDays(diasProceso); 
+					//obtiene el id del cliente del contexto del proceso
+
+					String customerId = "";
+
+					try{
+						customerId = (String) taskInstance.getToken().getProcessInstance().getContextInstance().getVariable("identificacion");
+					}catch(Exception ex){
+
+					}
+
+					String customerName = (String) taskInstance.getToken().getProcessInstance().getContextInstance().getVariable("nombreCliente");
+
+					//obtiene el nombre del cliente del contexto del proceso.
+					//				taskVo.setCustumerName(customerName!=null?customerName:"- sin valor -");
+					taskVo.setTaskId(String.valueOf(taskInstance.getId()));
+
+					listaTareas.add(taskVo);
+
+				}//fin if
+
+
+
+			}//fin for
+		} catch (Exception e) {
+			throw e;
+		}finally{
+			if (jbpmContext!=null) {
+				jbpmContext.close();
+			}
+			
+		}
+
+
 
 		return listaTareas;
 	}

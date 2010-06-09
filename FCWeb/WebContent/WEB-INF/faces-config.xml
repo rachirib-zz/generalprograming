@@ -14,6 +14,24 @@
 		<managed-bean-class>co.com.fc.view.Ingreso</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>informacionPersonalVista</managed-bean-name>
+		<managed-bean-class>co.com.fc.view.InformacionPersonalVista</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+
+	</managed-bean>
+
+	<managed-bean>
+		<managed-bean-name>referenciasVista</managed-bean-name>
+		<managed-bean-class>co.com.fc.view.ReferenciasVista</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>creditoVista</managed-bean-name>
+		<managed-bean-class>co.com.fc.view.CreditoVista</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
@@ -27,20 +45,4 @@
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
-
-	<managed-bean>
-		<managed-bean-name>informacionPersonalVista</managed-bean-name>
-		<managed-bean-class>co.com.fc.view.InformacionPersonalVista</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>referenciasVista</managed-bean-name>
-		<managed-bean-class>co.com.fc.view.ReferenciasVista</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>creditoVista</managed-bean-name>
-		<managed-bean-class>co.com.fc.view.CreditoVista</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
 </faces-config>
