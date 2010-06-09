@@ -190,8 +190,7 @@
 							</div>
 
 						</ice:panelTab>
-
-						<!-- Tabla de Inmuebles del Credito -->
+<!--
 						<ice:panelTab label="Inmuebles del Credito"
 							disabled="#{recepcionDatosRadicacion.tabInmuebles}">
 							<center>
@@ -244,7 +243,7 @@
 
 								</ice:dataTable>
 							</center>
-						</ice:panelTab>
+						</ice:panelTab>-->
 					</ice:panelTabSet>
 
 				</ice:form>
