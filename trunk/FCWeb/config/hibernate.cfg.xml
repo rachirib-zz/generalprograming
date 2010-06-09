@@ -40,7 +40,7 @@
 		<!-- CMT transaction properties (begin) === 
 			<property	name="hibernate.transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
 			<property	name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
-		<!--==== CMT transaction properties (end)-->
+		 CMT transaction properties (end)-->
 		
 
 		<!-- ################################### -->
