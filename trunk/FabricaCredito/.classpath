@@ -5,5 +5,7 @@
 	<classpathentry kind="src" path="src/main/jpdl"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/jbpm-identity.jar"/>
+	<classpathentry kind="lib" path="lib/jbpm-jpdl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

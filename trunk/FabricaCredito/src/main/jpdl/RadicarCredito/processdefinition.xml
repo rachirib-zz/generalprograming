@@ -7,7 +7,7 @@
 		<assignment actor-id="usuario1"></assignment>
 	</swimlane>
 	<swimlane name="Operador de digitalización">
-		<assignment actor-id="usuario2"></assignment>
+		<assignment actor-id="#{actorDigitalizacion}"></assignment>
 	</swimlane>
 	<swimlane name="Miembro de la Comisión de Aprobación">
 		<assignment actor-id="usuario3"></assignment>
@@ -17,6 +17,7 @@
 		<task name="Recibir Datos Radicacion Solicitud" swimlane="Analizador de Créditos">
 			<controller>
 				<variable name="numero_radicacion" access="read,write"></variable>
+				
 			</controller>
 
 		</task>
@@ -27,13 +28,16 @@
 
 
 	<node name="Matricular documentos de la solicitud de crédito">
+		<event type="process-start">
+			<action name="matricularDocumentosHandler" class="co.com.fc.handler.MatricularSolicitudHandler"></action>
+		</event>
 		<transition to="Digitalizar documento físico"></transition>
 		
 	</node>
 
 	<task-node name="Digitalizar documento físico">
 		<task name="Digitalizar documento físico" swimlane="Operador de digitalización">
-
+			
 		</task>
 		<transition to="Validar Documentos"></transition>
 
@@ -41,7 +45,7 @@
 
 	<task-node name="Validar Documentos">
 		<task name="Validar Documentos" swimlane="Analizador de Créditos">
-
+			
 		</task>
 		<transition to="Validar referencias"></transition>
 	</task-node>
@@ -62,15 +66,23 @@
 	</task-node>
 
 	<decision name="Documentos Consistentes">
-		<transition to="Validar Documentos" name="No"></transition>
-		<transition to="Mayoria o Consenso" name="Si"></transition>
+		<transition to="Validar Documentos" name="No">
+			<condition>#{documento_ok == 'No'}</condition>
+		</transition>
+		<transition to="Mayoria o Consenso" name="Si">
+			<condition>#{documento_ok == 'Si'}</condition>
+		</transition>
 	</decision>
 
 	<decision name="Mayoria o Consenso">
 		<transition to="Aprobar, negar o aplazar crédito por consenso"
-			name="to Aprobar, negar o aplazar crédito por consenso"></transition>
+			name="to Aprobar, negar o aplazar crédito por consenso">
+			<condition>#{mayoria_consenso == 'Consenso'}</condition>
+		</transition>
 		<transition to="Aprobar, negar o aplazar crédito por mayoría"
-			name="to Aprobar, negar o aplazar crédito por mayoría"></transition>
+			name="to Aprobar, negar o aplazar crédito por mayoría">
+			<condition>#{mayoria_consenso == 'Mayoria'}}</condition>	
+		</transition>
 	</decision>
 
 
@@ -81,8 +93,6 @@
 	</node>
 
 	<node name="Aprobar, negar o aplazar crédito por consenso">
-
-
 		<transition to="Aprobar, negar o aplazar crédito"></transition>
 	</node>
 

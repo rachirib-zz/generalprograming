@@ -37,7 +37,7 @@
 			==== JTA transaction properties (end)
 		-->
 
-		<!-- CMT transaction properties (begin) ===--> 
+		<!-- CMT transaction properties (begin) === 
 			<property	name="hibernate.transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
 			<property	name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
 		<!--==== CMT transaction properties (end)-->
@@ -47,7 +47,7 @@
 		<!-- # common settings                 # -->
 		<!-- ################################### -->
 
-		<!-- Automatic schema creation (begin) -->
+		<!-- Automatic schema creation (begin)-->
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- Automatic schema creation (end) -->
 

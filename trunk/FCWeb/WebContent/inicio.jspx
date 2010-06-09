@@ -12,7 +12,7 @@
 			doctypeSystem="http://www.w3.org/TR/html4/loose.dtd" />
 		<html>
 		<head>
-		<title>ICEfaces, Ajax for Java EE</title>
+		<title>Sistema de Fabrica de Creditos</title>
 		<link rel="stylesheet" type="text/css"
 			href="./xmlhttp/css/rime/rime.css" />
 		</head>

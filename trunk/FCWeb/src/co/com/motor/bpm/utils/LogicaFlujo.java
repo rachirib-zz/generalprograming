@@ -30,6 +30,7 @@ public class LogicaFlujo {
 	public JbpmContext creaContextPersistencia()throws Exception{
 		
 		JbpmConfiguration jbpmConfiguration = JbpmConfiguration.getInstance();
+	
 		JbpmContext jbpmContext = jbpmConfiguration.createJbpmContext();
 		
 		if(jbpmContext == null)
